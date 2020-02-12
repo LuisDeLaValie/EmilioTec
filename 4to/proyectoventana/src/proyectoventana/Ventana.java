@@ -1,5 +1,6 @@
 package proyectoventana;
 
+import com.sun.org.apache.xalan.internal.xsltc.compiler.util.StringStack;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -7,6 +8,7 @@ import java.awt.Font;
 import static java.awt.Frame.HAND_CURSOR;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -66,7 +68,7 @@ public class Ventana extends JFrame implements ActionListener {
 
         txtNomServicio1 = new JTextField();
         txtNomServicio1.setBounds(160, 20, 100, 20);
-        this.add(txtNomServicio1);
+        //this.add(txtNomServicio1);
 
         txtCostoServ = new JTextField();
         txtCostoServ.setBounds(160, 50, 100, 20);
@@ -91,23 +93,32 @@ public class Ventana extends JFrame implements ActionListener {
         btnCalcular.setBackground(new Color(255, 255, 255));
         this.add(btnCalcular);
         
+        combaoxtext= new JComboBox();
+        combaoxtext.setModel(new DefaultComboBoxModel(new String[]{"afinacion","fRENOS","cambio de acenite"}));
+        combaoxtext.setBounds(160, 20, 100, 20);
+        this.add(combaoxtext);
         
         
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        
-        if (ae.getSource() == btnCalcular) {
-            String costo = txtCostoServ.getText();
-            
-            double iva =Integer.parseInt(costo)*0.16;
-            
-            txtIva.setText(""+iva);
-            txtTotalPagar.setText(""+(Integer.parseInt(costo)+iva));
-            System.out.println(costo);
-        }
-        
+        try{
+            if (ae.getSource() == btnCalcular) {
+                String costo = txtCostoServ.getText();
+                if(costo.equals("")){
+                    JOptionPane.showMessageDialog(null, "campo basio");
+                }else{
+                    Double.parseDouble(costo);
+                    double iva =Integer.parseInt(costo)*0.16;
+                    txtIva.setText(""+iva);
+                    txtTotalPagar.setText(""+(Integer.parseInt(costo)+iva));
+                    System.out.println(costo);
+                }
+            }
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "solo numeros");
+        }        
     }
 
 }
