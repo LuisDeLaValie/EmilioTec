@@ -2,21 +2,28 @@ package proyectoventana;
 
 import com.sun.org.apache.xalan.internal.xsltc.compiler.util.StringStack;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import static java.awt.Frame.HAND_CURSOR;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import sun.awt.AWTAccessor;
 
-public class Ventana extends JFrame implements ActionListener {
+public class Ventana extends JFrame implements ActionListener, KeyListener, MouseListener {
 
     private JLabel et1, et2, et3, et4;
     private JTextField txtNomServicio1, txtCostoServ, txtIva, txtTotalPagar;
@@ -73,6 +80,7 @@ public class Ventana extends JFrame implements ActionListener {
         txtCostoServ = new JTextField();
         txtCostoServ.setBounds(160, 50, 100, 20);
         this.add(txtCostoServ);
+        txtCostoServ.addKeyListener(this);
 
         txtIva = new JTextField();
         txtIva.setBounds(160, 80, 100, 20);
@@ -103,6 +111,7 @@ public class Ventana extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
+
         try{
             if (ae.getSource() == btnCalcular) {
                 String costo = txtCostoServ.getText();
@@ -120,5 +129,52 @@ public class Ventana extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null, "solo numeros");
         }        
     }
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+        
+        char caracter=ke.getKeyChar();
+        
+        if(((caracter<'0')||(caracter>'9'))
+                &&(caracter!=KeyEvent.VK_BACK_SPACE)
+                &&(caracter!='.')
+                ){
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+       
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+       
+    }
+    
+    
+
+    @Override
+    public void mouseClicked(MouseEvent me) {
+        
+    }
+
+    @Override
+    public void mousePressed(MouseEvent me) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent me) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent me) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent me) {
+    }
+    
 
 }
