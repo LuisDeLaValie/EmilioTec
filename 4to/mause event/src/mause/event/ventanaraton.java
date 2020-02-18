@@ -6,6 +6,8 @@
 package mause.event;
 
 import java.awt.Color;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,9 +16,9 @@ import javax.swing.JLabel;
  *
  * @author PROGRAMAR
  */
-public class ventanaraton extends JFrame{
+public class ventanaraton extends JFrame implements MouseListener{
     private JButton btnBoton;
-    private JLabel et1,et2;
+    private JLabel et1,et2,et3;
     
     public ventanaraton() {
         configurarVentana();
@@ -50,10 +52,60 @@ public class ventanaraton extends JFrame{
         
         btnBoton = new JButton("aceptar");
         btnBoton.setBounds(140, 100, 100, 80);
+        btnBoton.addMouseListener(this);
         this.add(btnBoton);
+        et3=new JLabel();
+        et3.setBackground(Color.WHITE);
+        et3.setOpaque(true);
+        et3.setVisible(false);
+        et3.setBounds(220, 120, 100, 20);
+        this.add(et3);
                
         
         
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent me) {
+         if(me.getSource() == btnBoton){
+            et1.setText("");
+            et1.setText("Click");
+        }
+    }
+    
+    //precionar el botonizq
+    @Override
+    public void mousePressed(MouseEvent me) {
+        if(me.getSource() == btnBoton){
+            et1.setText("");
+            et1.setText("boton mause presionado");
+        }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent me) {
+         if(me.getSource() == btnBoton){
+            et1.setText("");
+            et1.setText("boton mause liberado");
+        }
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent me) {
+         if(me.getSource() == btnBoton){
+            et3.setText("");
+            et3.setText("boton mause entro");
+            et3.setVisible(true);
+        }
+    }
+
+    @Override
+    public void mouseExited(MouseEvent me) {
+         if(me.getSource() == btnBoton){
+            et3.setText("");
+            et3.setText("boton mause salio");
+            et3.setVisible(false);
+        }
     }
     
 }
