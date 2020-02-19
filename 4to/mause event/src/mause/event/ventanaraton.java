@@ -54,6 +54,7 @@ public class ventanaraton extends JFrame implements MouseListener{
         btnBoton.setBounds(140, 100, 100, 80);
         btnBoton.addMouseListener(this);
         this.add(btnBoton);
+       
         et3=new JLabel();
         et3.setBackground(Color.WHITE);
         et3.setOpaque(true);
