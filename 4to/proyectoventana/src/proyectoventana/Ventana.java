@@ -1,5 +1,6 @@
 package proyectoventana;
 
+import com.sun.org.apache.xalan.internal.xsltc.compiler.util.StringStack;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
@@ -9,8 +10,11 @@ import static java.awt.Frame.HAND_CURSOR;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.DefaultComboBoxModel;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -19,7 +23,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import sun.awt.AWTAccessor;
 
-public class Ventana extends JFrame implements ActionListener, KeyListener {
+public class Ventana extends JFrame implements ActionListener, KeyListener, MouseListener {
 
     private JLabel et1, et2, et3, et4;
     private JTextField txtNomServicio1, txtCostoServ, txtIva, txtTotalPagar;
@@ -71,7 +75,7 @@ public class Ventana extends JFrame implements ActionListener, KeyListener {
 
         txtNomServicio1 = new JTextField();
         txtNomServicio1.setBounds(160, 20, 100, 20);
-        this.add(txtNomServicio1);
+        //this.add(txtNomServicio1);
 
         txtCostoServ = new JTextField();
         txtCostoServ.setBounds(160, 50, 100, 20);
@@ -97,30 +101,38 @@ public class Ventana extends JFrame implements ActionListener, KeyListener {
         btnCalcular.setBackground(new Color(255, 255, 255));
         this.add(btnCalcular);
         
+        combaoxtext= new JComboBox();
+        combaoxtext.setModel(new DefaultComboBoxModel(new String[]{"afinacion","fRENOS","cambio de acenite"}));
+        combaoxtext.setBounds(160, 20, 100, 20);
+        this.add(combaoxtext);
         
         
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        
-        if (ae.getSource() == btnCalcular) {
-            String costo = txtCostoServ.getText();
-            
-            double iva =Integer.parseInt(costo)*0.16;
-            
-            txtIva.setText(""+iva);
-            txtTotalPagar.setText(""+(Integer.parseInt(costo)+iva));
-            System.out.println(costo);
-            
-        }
-        
-    }
 
+        try{
+            if (ae.getSource() == btnCalcular) {
+                String costo = txtCostoServ.getText();
+                if(costo.equals("")){
+                    JOptionPane.showMessageDialog(null, "campo basio");
+                }else{
+                    Double.parseDouble(costo);
+                    double iva =Integer.parseInt(costo)*0.16;
+                    txtIva.setText(""+iva);
+                    txtTotalPagar.setText(""+(Integer.parseInt(costo)+iva));
+                    System.out.println(costo);
+                }
+            }
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "solo numeros");
+        }        
+    }
 
     @Override
     public void keyTyped(KeyEvent ke) {
-        JOptionPane.showMessageDialog(null, "key");
+        
         char caracter=ke.getKeyChar();
         
         if(((caracter<'0')||(caracter>'9'))
@@ -133,12 +145,35 @@ public class Ventana extends JFrame implements ActionListener, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent ke) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
 
     @Override
     public void keyReleased(KeyEvent ke) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+    }
+    
+    
+
+    @Override
+    public void mouseClicked(MouseEvent me) {
+        
+    }
+
+    @Override
+    public void mousePressed(MouseEvent me) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent me) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent me) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent me) {
     }
     
 
