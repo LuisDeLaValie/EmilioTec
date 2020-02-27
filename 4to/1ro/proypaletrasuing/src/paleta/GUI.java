@@ -30,7 +30,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnok = new javax.swing.JButton();
         txtinput = new javax.swing.JTextField();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jCalendar2 = new com.toedter.calendar.JCalendar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -48,8 +48,8 @@ public class GUI extends javax.swing.JFrame {
         txtinput.setText("jTextField1");
         getContentPane().add(txtinput);
         txtinput.setBounds(60, 90, 150, 30);
-        getContentPane().add(jCalendar1);
-        jCalendar1.setBounds(210, 140, 184, 153);
+        getContentPane().add(jCalendar2);
+        jCalendar2.setBounds(190, 140, 184, 153);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -91,7 +91,7 @@ public class GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnok;
-    private com.toedter.calendar.JCalendar jCalendar1;
+    private com.toedter.calendar.JCalendar jCalendar2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txtinput;
     // End of variables declaration//GEN-END:variables
