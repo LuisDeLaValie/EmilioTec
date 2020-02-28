@@ -174,14 +174,14 @@ public class peso extends javax.swing.JFrame {
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
         int estatura=Integer.parseInt(txtestatura.getText()), actual=Integer.parseInt(txtpeso.getText());
         float idbro =estatura-100;
-        peso(rbhombre., idbro);
+        peso(rbhombre.isSelected(), idbro);
                 
     }//GEN-LAST:event_btnCalcularActionPerformed
 
-    private void peso(bool ge,float  ib){
+    private void peso(boolean ge,float  ib){
         etPesoideal1.setText(""+ib);
-        sobrepeo1.setText(""+(ge?(ge+(eg*0.1)):(ge+(eg*0.15))));
-        bajopeso.setText(""+(ge?(ge-(eg*0.1)):(ge-(eg*0.15))));
+        sobrepeo1.setText(""+(ge?(ib+(ib*0.1)):(ib+(ib*0.15))));
+        bajopeso.setText(""+(ge?(ib-(ib*0.1)):(ib-(ib*0.15))));
     }
     private void rbhombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbhombreActionPerformed
         // TODO add your handling code here:
