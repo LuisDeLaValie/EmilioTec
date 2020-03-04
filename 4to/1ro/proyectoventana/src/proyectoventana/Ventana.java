@@ -1,6 +1,5 @@
 package proyectoventana;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.util.StringStack;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
@@ -21,7 +20,6 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import sun.awt.AWTAccessor;
 
 public class Ventana extends JFrame implements ActionListener, KeyListener, MouseListener {
 
@@ -31,24 +29,27 @@ public class Ventana extends JFrame implements ActionListener, KeyListener, Mous
     private JComboBox combaoxtext;
 
     public Ventana() {
+        
         inicializar();
         iniControles();
+        libmensajes.libmensaje.SaludoPersonalizado("jose pakos");
     }
 
     private void inicializar() {
-        this.setVisible(true);
+        
         this.setSize(400, 300);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Taller Mecanico");
         //this.setMinimumSize(new Dimension(800,600));
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.setLayout(null);
         this.getContentPane().setBackground(Color.decode("#DE0061"));
 
     }
 
     private void iniControles() {
-        this.setLayout(null);
+        
         et1 = new JLabel();
         et1.setBounds(40, 20, 200, 20);
         et1.setText("Nombre del servicio: ");
