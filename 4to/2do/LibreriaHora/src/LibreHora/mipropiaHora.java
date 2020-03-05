@@ -15,7 +15,7 @@ import java.util.Date;
  */
 public class mipropiaHora {
     
-    static Date date = new Date();
+    Date date = new Date();
     
     public void Hora(){
         DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
